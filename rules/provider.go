@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/wata727/tflint/rules/awsrules"
+	awsmodelrules "github.com/wata727/tflint/rules/awsrules/models"
 	"github.com/wata727/tflint/rules/terraformrules"
 	"github.com/wata727/tflint/tflint"
 )
@@ -30,6 +31,10 @@ var DefaultRules = []Rule{
 	awsrules.NewAwsInstancePreviousTypeRule(),
 	awsrules.NewAwsRouteNotSpecifiedTargetRule(),
 	awsrules.NewAwsRouteSpecifiedMultipleTargetsRule(),
+	awsmodelrules.NewAwsAcmCertificateInvalidCertificateBodyRule(),
+	awsmodelrules.NewAwsAcmCertificateInvalidCertificateChainRule(),
+	awsmodelrules.NewAwsAcmCertificateInvalidPrivateKeyRule(),
+	awsmodelrules.NewAwsLaunchTemplateInvalidNameRule(),
 	terraformrules.NewTerraformModulePinnedSourceRule(),
 }
 

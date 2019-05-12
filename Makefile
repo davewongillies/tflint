@@ -5,7 +5,7 @@ prepare:
 	dep ensure
 
 test: prepare
-	go test $$(go list ./... | grep -v vendor | grep -v mock)
+	go test $$(go list ./... | grep -v vendor | grep -v mock | grep -v aws-sdk-go)
 
 build: test
 	go build -v
@@ -56,5 +56,8 @@ image:
 
 rule:
 	go run tools/rule_generator.go
+
+model_rules:
+	go run tools/model-rule-gen/main.go
 
 .PHONY: default prepare test build install release clean mock image rule
